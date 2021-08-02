@@ -4,4 +4,5 @@ players = {
     ("Rob", "Bobbin"): (12, 8, 2)
 }
 
-# TODO здесь писать код
+result = [name_surname + points for name_surname, points in players.items()]
+print(result)
