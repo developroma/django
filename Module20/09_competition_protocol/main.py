@@ -1,24 +1,17 @@
-amount = int(input('Сколько записей вносится в протокол? '))
-# if amount < 3:
-#     print('Участников не может быть меньше 3х:')
-
-print('Записи (результат и имя)')
-
-generate_dict = dict()
-
-for i in range(amount):
-    exp, name = input(f'{i + 1} запись: ').split()
-    if name in generate_dict:
-        max_one = max(exp)
-        generate_dict[name] = max_one
+score_table = {}
+number_rows = int(input('Общее количество строк протокола: '))
+print('Введите результат - имя участника (через пробел):')
+for time in range(number_rows):
+    ball, name = input('{0} запись: '.format(time + 1)).split()
+    ball = int(ball)
+    if name in score_table:
+        score_table[name] = ball
     else:
-        generate_dict[name] = exp
+        score_table[name] = ball
+s = sorted(score_table.values(), reverse=True)
+s2 = score_table.keys()
 
-values_list = [int(values) for values in generate_dict.values()]
-keys_list = [keys for keys in generate_dict.keys()]
-
-exp_list = sorted(values_list, reverse=True)
-three_winners = exp_list[:3]
-
-sorted_keys_list = sorted(keys_list)
-print(sorted_keys_list)
+for i2 in s2:
+    for i in s:
+        if score_table[i2] == i:
+            print(i2)

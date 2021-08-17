@@ -1,5 +1,18 @@
-def is_prime(data):
-    return [i for i in data if i >= 2 if i % (i // 2) != 0]
+from math import *
 
 
-print(is_prime([3, 5, 7, 11, 12, 13, 14]))
+def is_prime(numbers):
+    return [True if i % ceil((i / 2)) != 0 else False for i in numbers]
+
+
+data = [3, 5, 7, 11, 12, 13, 14]
+
+print(is_prime(data))
+
+for i in data:
+    for j in is_prime(data):
+        if not j:
+            if i in data:
+                data.remove(i)
+
+print(data)
